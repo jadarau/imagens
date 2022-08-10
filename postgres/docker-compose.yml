@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  teste-postgres-compose:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: "12345"
+    ports:
+      - "5432:5432"
+    volumes:
+      - /Users/jadar/Documents/dev/postgresSql_docker/autentication/PostgreSQL
+      
+  teste-pgadmin-compose:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "jadarau@gmail.com"
+      PGADMIN_DEFAULT_PASSWORD: "12345"
+    ports:
+      - "16543:80"
+    depends_on:
+      - teste-postgres-compose
